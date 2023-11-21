@@ -23,7 +23,7 @@ def display_query_result(result):
     st.write(df)
 
 def plot_graph(dataframe, x_column, y_column, num_rows, label_column):
-    plt.figure(figsize=(10,10))
+    plt.figure(figsize=(20,10))
     
     bars = plt.barh(dataframe[x_column].head(num_rows), dataframe[y_column].head(num_rows).astype(float))
     plt.xlabel(y_column, fontsize=25)
@@ -34,8 +34,9 @@ def plot_graph(dataframe, x_column, y_column, num_rows, label_column):
 
     if label_column is not None:
         label_values = label_column.head(num_rows).tolist()
+        
         for bar, label in zip(bars, label_values):
-            plt.text(bar.get_width(), bar.get_y() + bar.get_height() / 2, str(label), ha='left', va='center')
+            plt.text(bar.get_width(), bar.get_y() + bar.get_height() / 2, str(label),fontsize=20 , ha='left', va='center')
 
     st.pyplot()
 
